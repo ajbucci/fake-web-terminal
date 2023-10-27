@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>Simple Terminal Header</header>
+    <div class="terminal">
+        <pre class="header">
+ ________          ___    ________    ___  ___    ________    ________    ___           ________    ________    _____ ______      
+|\   __  \        |\  \  |\   __  \  |\  \|\  \  |\   ____\  |\   ____\  |\  \         |\   ____\  |\   __  \  |\   _ \  _   \    
+\ \  \_\  \       \ \  \ \ \  \_\ /_ \ \  \ \  \ \ \  \___|  \ \  \___|  \ \  \        \ \  \___|  \ \  \ \  \ \ \  \ \__\ \  \   
+ \ \   __  \    __ \ \  \ \ \   __  \ \ \  \ \  \ \ \  \      \ \  \      \ \  \        \ \  \      \ \  \ \  \ \ \  \\__|\ \  \  
+  \ \  \ \  \  |\  \\_\  \ \ \  \_\  \ \ \  \_\  \ \ \  \____  \ \  \____  \ \  \    ___ \ \  \____  \ \  \_\  \ \ \  \    \ \  \ 
+   \ \__\ \__\ \ \________\ \ \_______\ \ \_______\ \ \_______\ \ \_______\ \ \__\  |\__\ \ \_______\ \ \_______\ \ \__\    \ \__\
+    \|__|\|__|  \|________|  \|_______|  \|_______|  \|_______|  \|_______|  \|__|  \|__|  \|_______|  \|_______|  \|__|     \|__|
+        </pre>
+        <div class="output"></div>
+        <div class="line">
+            <div class="prompt"><span id="user">cv</span><span>@</span><span id=host>ajbucci.com</span><span>&nbsp;$&nbsp;</span></div>
+            <input class="command" type="text" id="cmd" />
+            <span class="fake-caret"></span>
+        </div>
+        <div class="suggestions"></div>        
+    </div>
+    <footer>Simple Terminal Footer</footer>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

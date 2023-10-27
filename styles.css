@@ -1,0 +1,114 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: rgb(40,42,54);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+header, footer {
+    background-color: #c2cbff;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.terminal {
+    flex-grow: 1;  /* Makes the terminal div take all available space between header and footer */
+    padding: 1em;
+    cursor: text;  /* Cursor will always appear as text cursor in terminal area */
+    overflow-y: auto;
+}
+
+.output, .header, input#cmd, .prompt, .suggestions {
+    background-color: transparent; 
+    border: none;
+    outline: none;
+    color: white;
+    font-family: monospace;  /* Use a monospace font for the input */
+    font-size: 16px;  /* Adjust to the size you find appropriate */
+    /*text-shadow: rgb(0, 255, 21) 1px 0 10px;*/
+}
+
+#user {
+    color: rgb(80, 250, 123);
+}
+
+#host {
+    color: rgb(189, 147, 249);
+}
+.output {
+    white-space: pre;
+}
+
+.suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* space between suggestions */
+    margin-top: 5px;
+    color: white;
+}
+
+.suggestion-item {
+    padding: 2px 8px; /* padding for each command suggestion */
+    cursor: pointer;
+    color: white;
+    /* Additional styles for the suggestion items */
+}
+
+input#cmd {
+    pointer-events: none;  /* Makes the input non-selectable on its own */
+    caret-color: transparent;
+    padding: 0px;
+    background-color: rgb(40,42,54);
+    /*line-height: 22px;*/
+    width: 0px;
+    /*height: 22px;*/
+}
+
+.prompt {
+    display: inline-flex;
+    align-items: center;
+}
+
+.command {
+    margin: 0;
+    /*padding-left: 2px;
+    padding-top: 1px;*/
+}
+
+.input {
+    appearance: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+.line {
+    display: flex;
+    flex-direction: row;
+    /*height: 22px; /* need to set this programatically... firefox does not behave properly with the input text box */
+}
+
+.fake-caret {
+    display: inline-block;
+    background-color: white;
+    vertical-align: middle;
+    font-family: monospace;
+    font-size: 16px;
+    width: 0.5em;
+    /*animation: blink 0.5s step-end infinite;*/
+}
+
+@keyframes blink {
+    0% { content: "|" } 
+    25% { content: "/" }
+    50% { content: "-" }
+    75% { content: "\\" }
+}
