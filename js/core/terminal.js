@@ -41,7 +41,8 @@ inputCmd.addEventListener('keydown', function(e) {
         commandLine.appendChild(commandDiv);
 
         outputDiv.appendChild(commandLine);
-
+        // Hide the suggestion div
+        suggestionsDiv.innerHTML = '';
         // Process and display the command output
         const parts = inputCmd.value.split(' ').filter(part => part.length > 0);
         const commandName = parts[0];
@@ -69,7 +70,13 @@ inputCmd.addEventListener('keydown', function(e) {
         if (currentTabPressTime - lastTabPressTime <= 300) {
             const userInput = inputCmd.value;
             const matchingCommands = getMatchingCommands(userInput, currentCommands);
-            displaySuggestions(matchingCommands, suggestionsDiv);
+            // Autocomplete suggestion if there is only 1, otherwise display all matching
+            if (matchingCommands.length == 1) {
+                inputCmd.value = matchingCommands[0].name;
+                setInputWidth(inputCmd);
+            } else {
+                displaySuggestions(matchingCommands, suggestionsDiv);
+            }
         }
         lastTabPressTime = currentTabPressTime;
     }
