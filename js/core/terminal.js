@@ -1,7 +1,7 @@
 import { currentCommands, executeCommand } from './command.js';
 import { getMatchingCommands, displaySuggestions } from '../utils/suggestions.js';
-import { setInputWidth, setInputHeight } from '../utils/resize.js';
 import { recordCommand, navigateHistory } from '../utils/history.js';
+import { moveCaret } from '../utils/caret.js';
 
 const terminalDiv = document.querySelector('.terminal');
 const outputDiv = document.querySelector('div.output');
@@ -11,14 +11,11 @@ const promptDiv = document.querySelector('.prompt');
 
 let lastTabPressTime = 0;
 
-setInputHeight(inputCmd); // sets the height explicitly to workaround a bug in firefox text input padding
+moveCaret(inputCmd, promptDiv);
 
 terminalDiv.addEventListener('click', function() {
     inputCmd.focus();
-});
-
-inputCmd.addEventListener('input', function() {
-    setInputWidth(inputCmd);
+    moveCaret(inputCmd, promptDiv);
 });
 
 inputCmd.addEventListener('keydown', function(e) {
@@ -56,13 +53,15 @@ inputCmd.addEventListener('keydown', function(e) {
 
         // Clear the input field for the next command
         inputCmd.value = '';
-        setInputWidth(inputCmd);
+        moveCaret(inputCmd, promptDiv);
 
         // Scroll to the bottom
         terminalDiv.scrollTop = terminalDiv.scrollHeight;
 
     } else if (['ArrowUp', 'ArrowDown'].includes(e.key)) {
-        navigateHistory(e, inputCmd, () => setInputWidth(inputCmd));
+        e.preventDefault();
+        navigateHistory(e, inputCmd);
+        moveCaret(inputCmd, promptDiv);
     } else if (e.key === 'Tab') {
         e.preventDefault();
 
@@ -73,7 +72,7 @@ inputCmd.addEventListener('keydown', function(e) {
             // Autocomplete suggestion if there is only 1, otherwise display all matching
             if (matchingCommands.length == 1) {
                 inputCmd.value = matchingCommands[0].name;
-                setInputWidth(inputCmd);
+                moveCaret(inputCmd, promptDiv);
             } else {
                 displaySuggestions(matchingCommands, suggestionsDiv);
             }
@@ -85,7 +84,7 @@ inputCmd.addEventListener('keydown', function(e) {
 suggestionsDiv.addEventListener('click', function(e) {
     if (e.target.classList.contains('suggestion-item')) {
         inputCmd.value = e.target.textContent;
-        setInputWidth(inputCmd);
+        moveCaret(inputCmd, promptDiv);
         suggestionsDiv.innerHTML = ''; // clear suggestions
         // You might also want to focus on the input after selecting a suggestion
         inputCmd.focus();
@@ -105,4 +104,8 @@ document.addEventListener('mouseout', function(e) {
         // Remove highlight on mouse out
         e.target.style.backgroundColor = '';
     }
+});
+
+document.addEventListener('selectionchange', function(e) {
+    moveCaret(inputCmd, promptDiv);
 });
