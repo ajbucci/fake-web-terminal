@@ -1,19 +1,19 @@
+import FileSystem from '/js/core/filesystem.js';
+
 export default {
   name: 'ls',
   description: 'list directories',
   execute: ls,
 }
 
+function ls() {
+  const currentPath = FileSystem.fileSystemState.currentDirectory;
 
-async function ls(directoryPath) {
-  let text = await fetch('fake-web-terminal/js/filesystem')
-    .then(response => response.text())
-    .then(data => {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(data, "text/html");
-      const links = Array.from(doc.querySelectorAll('a'));
-      return links.map(link => link.textContent).join('  ');
-    });
-    
-  return text;
+  const currentDirObject = FileSystem.getDirectory(currentPath);
+
+  if (!currentDirObject || !currentDirObject.children) {
+      return "No files or directories here.";
+  }
+
+  return currentDirObject.children.map(child => child.name).join('  ');
 }

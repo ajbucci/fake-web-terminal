@@ -1,0 +1,20 @@
+{
+  "path": "filesystem/root",
+  "name": "root",
+  "children": [
+    {
+      "path": "filesystem/root/dir1",
+      "name": "dir1",
+      "children": [
+        {
+          "path": "filesystem/root/dir1/file2.txt",
+          "name": "file2.txt"
+        }
+      ]
+    },
+    {
+      "path": "filesystem/root/file1.txt",
+      "name": "file1.txt"
+    }
+  ]
+}
