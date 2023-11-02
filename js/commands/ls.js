@@ -6,7 +6,7 @@ export default {
 
 
 async function ls(directoryPath) {
-  let text = await fetch('js/filesystem')
+  let text = await fetch('fake-web-terminal/js/filesystem')
     .then(response => response.text())
     .then(data => {
       const parser = new DOMParser();
