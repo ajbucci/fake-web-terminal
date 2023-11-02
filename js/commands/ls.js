@@ -1,4 +1,4 @@
-import FileSystem from '/js/core/filesystem.js';
+import FileSystem from '../core/filesystem.js';
 
 export default {
   name: 'ls',
