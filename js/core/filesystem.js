@@ -10,7 +10,7 @@ async function loadFileSystem() {
   const response = await fetch('/filesystem/filesystem.json');
   fileSystemData = await response.json();
   fileSystemState.networkPrefix = fileSystemData.path;
-  fileSystemState.currentPath = '/';
+  fileSystemState.currentPath = rootPath;
 }
 
 loadFileSystem();
@@ -22,7 +22,7 @@ function getDirectory(path, currentDir = fileSystemData) {
     return fileSystemData;
   }
   // Remove the prefix
-  path = path.replace(new RegExp(`^${prefixPath}/`), "");
+  // path = path.replace(new RegExp(`^${prefixPath}/`), "");
   const pathParts = path.split('/').filter(Boolean);
 
   if (pathParts.length === 0) return currentDir;
@@ -40,7 +40,7 @@ function isDirectory(path) {
 
 function navigatePath(relativePath) {
     let parts = relativePath.split('/').filter(part => part !== '');
-    let currentParts = fileSystemState.currentDirectory.split('/').filter(part => part !== '');
+    let currentParts = fileSystemState.currentPath.split('/').filter(part => part !== '');
 
     for (let part of parts) {
         if (part === "..") {
@@ -50,11 +50,12 @@ function navigatePath(relativePath) {
         }
     }
     const potentialPath = currentParts.join('/') + '/';
-    return isDirectory(potentialPath) ? potentialPath : fileSystemState.currentDirectory;
+    return isDirectory(potentialPath) ? potentialPath : fileSystemState.currentPath;
 }
 
 export default {
     fileSystemState,
+    rootPath,
     isDirectory,
     getDirectory,
     navigatePath

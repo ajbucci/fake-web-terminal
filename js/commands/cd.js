@@ -7,11 +7,11 @@ function cd(path) {
     if (FileSystem.isDirectory(newPath)) {
         // Update dirSpan to only show the current folder
         let displayedDirectory = newPath.split('/').filter(part => part !== '').pop();
-        if (newPath === FileSystem.fileSystemState.rootDirectory + '/') {
+        if (newPath === FileSystem.rootPath) {
             displayedDirectory = "~";
         }
         dirSpan.textContent = displayedDirectory;
-        FileSystem.fileSystemState.currentDirectory = newPath;
+        FileSystem.fileSystemState.currentPath = newPath;
         return `Changed to ${displayedDirectory}`;
     } else {
         return `cd: ${path}: No such directory`;

@@ -7,7 +7,7 @@ export default {
 }
 
 function ls() {
-  const currentPath = FileSystem.fileSystemState.currentDirectory;
+  const currentPath = FileSystem.fileSystemState.currentPath;
 
   const currentDirObject = FileSystem.getDirectory(currentPath);
 
