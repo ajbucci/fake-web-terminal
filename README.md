@@ -9,6 +9,8 @@ TODO:
     - [ ] options
     - [x] js functions
     - [x] sub commands/nested contexts
+    - [ ] custom interpreters in sub-contexts
+        - [ ] make command.js an extensible class, perhaps rename to interpreter.js?
 - [ ] command history
     - [x] basic functionality
     - [ ] context aware
@@ -16,4 +18,5 @@ TODO:
     - [x] basic functionality
     - [x] autocomplete if only 1 suggestion in list
     - [x] context aware
+    - [ ] autocomplete for command args?
 - [ ] 
