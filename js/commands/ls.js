@@ -2,7 +2,7 @@ import FileSystem from '../core/filesystem.js';
 
 export default {
   name: 'ls',
-  description: 'list directories',
+  description: 'list directory contents',
   execute: ls,
 }
 
@@ -15,5 +15,5 @@ function ls() {
       return "No files or directories here.";
   }
 
-  return currentDirObject.children.map(child => child.name).join('  ');
+  return currentDirObject.children.map(child => child.name).join('\n');
 }
