@@ -1,5 +1,5 @@
 let fileSystemData = null;
-let prefixPath = null;
+
 const rootPath = '/';
 
 let fileSystemState = {
@@ -7,7 +7,7 @@ let fileSystemState = {
   currentPath: null,
 }
 async function loadFileSystem() {
-  const response = await fetch('../../filesystem/filesystem.json');
+  const response = await fetch(window.location.pathname + 'filesystem/filesystem.json');
   fileSystemData = await response.json();
   fileSystemState.networkPrefix = fileSystemData.path;
   fileSystemState.currentPath = rootPath;
