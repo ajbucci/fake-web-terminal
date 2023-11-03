@@ -1,6 +1,8 @@
 let fileSystemData = null;
 
 const rootPath = '/';
+const homeAliasRE = /^~\/?/i;
+const absolutePrefix = '/';
 
 let fileSystemState = {
   networkPrefix: null,
@@ -53,9 +55,19 @@ function navigatePath(relativePath) {
     return isDirectory(potentialPath) ? potentialPath : fileSystemState.currentPath;
 }
 
+function getAbsolutePath(path) {
+  let newPath = path.replace(homeAliasRE, '/');
+  let isPathRelative = newPath[0] !== absolutePrefix;
+  if (isPathRelative) {
+    newPath = fileSystemState.currentPath + '/' + path;
+  }
+  return newPath
+}
+
 export default {
     fileSystemState,
     rootPath,
+    getAbsolutePath,
     isDirectory,
     getDirectory,
     navigatePath

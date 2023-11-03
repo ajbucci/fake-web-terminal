@@ -1,4 +1,4 @@
-import {currentCommands, executeCommand} from './command.js';
+import {currentCommands, getCommandOutput} from './command.js';
 import {
   getMatchingCommands,
   displaySuggestions,
@@ -48,10 +48,7 @@ inputCmd.addEventListener('keydown', async function(e) {
     const commandName = parts[0];
     const args = parts.slice(1);
 
-    const output = await executeCommand(commandName, args);
-
-    const commandOutput = document.createElement('div');
-    commandOutput.textContent = output;
+    const commandOutput = await getCommandOutput(commandName, args);
     outputDiv.appendChild(commandOutput);
 
     // Clear the input field for the next command

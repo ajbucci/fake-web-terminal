@@ -7,14 +7,30 @@
       "name": "dir1",
       "children": [
         {
+          "path": "filesystem/root/dir1/dir2",
+          "name": "dir2",
+          "children": [
+            {
+              "path": "filesystem/root/dir1/dir2/file3.txt",
+              "name": "file3.txt",
+              "type": "file"
+            }
+          ],
+          "type": "directory"
+        },
+        {
           "path": "filesystem/root/dir1/file2.txt",
-          "name": "file2.txt"
+          "name": "file2.txt",
+          "type": "file"
         }
-      ]
+      ],
+      "type": "directory"
     },
     {
       "path": "filesystem/root/file1.txt",
-      "name": "file1.txt"
+      "name": "file1.txt",
+      "type": "file"
     }
-  ]
+  ],
+  "type": "directory"
 }

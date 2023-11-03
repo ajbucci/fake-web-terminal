@@ -58,8 +58,20 @@ function handleExit() {
   }
 }
 
-async function executeCommand(commandName, args = [], callback) {
+async function getCommandOutput(commandName, args = []) {
   const command = currentCommands.find((cmd) => cmd.name === commandName);
+  const output = await executeCommand(command, args);
+  const commandOutput = document.createElement('div');
+  let allowsHtml = command.allowsHtml;
+  if (allowsHtml) {
+    commandOutput.innerHTML = output;
+  } else {
+    commandOutput.textContent = output;
+  }
+  return commandOutput;
+}
+
+async function executeCommand(command, args = []) {
   if (command) {
     if (command.commands) {
       // If the command has subcommands
@@ -76,4 +88,4 @@ async function executeCommand(commandName, args = [], callback) {
   }
 }
 
-export {executeCommand, currentCommands};
+export {getCommandOutput, currentCommands};

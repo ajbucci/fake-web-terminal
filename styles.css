@@ -1,21 +1,52 @@
+@font-face {
+    font-family: indie-flower;
+    src: url(IndieFlower-Regular.ttf);
+}
+@font-face {
+    font-family: tenor-sans;
+    src: url(TenorSans-Regular.ttf);
+}
+@font-face {
+    font-family: urbanist;
+    src: url(Urbanist-VariableFont_wght.ttf);
+}
+@font-face {
+    font-family: josefin-sans;
+    src: url(JosefinSans-VariableFont_wght.ttf);
+}
+
 body, html {
     margin: 0;
     padding: 0;
     height: 100%;
     background: rgb(40,42,54);
-    background-image: url("night-river-cottage-woodcut-circles-blur.png");
 }
 
 body {
     display: flex;
+    padding: 1em;
     flex-direction: column;
 }
 
+header {
+    margin-bottom: 1rem;
+    font-family: urbanist;
+    font-size: 30px;
+    box-shadow: 0rem 0rem 1rem rgb(26, 24, 51);
+}
+
+.topnav a {
+    padding: 0.5em;
+}
+footer {
+    margin-top: 1em;
+}
+
 header, footer {
-    background-color: #c2cbff;
-    color: rgb(0, 0, 0);
-    padding: 10px;
+    background-color: #494f72;
+    color: rgb(255, 242, 231);
     text-align: center;
+    padding: 1rem;
     flex-shrink: 0;
 }
 
@@ -24,6 +55,7 @@ header, footer {
     padding: 1em;
     cursor: text;  /* Cursor will always appear as text cursor in terminal area */
     overflow-y: auto;
+    background-image: url("night-river-cottage-woodcut-circles-blur.png");
 }
 
 .output, .header, input#cmd, .prompt, .suggestions {
@@ -36,6 +68,15 @@ header, footer {
     /*text-shadow: rgb(0, 255, 21) 1px 0 10px;*/
 }
 
+.header {
+    font-style: bold;
+    margin: 0;
+    padding: 0;
+}
+
+.lsdir {
+    color:rgb(255, 121, 198);
+}
 #user {
     color: rgb(80, 250, 123);
 }
