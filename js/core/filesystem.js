@@ -40,35 +40,37 @@ function isDirectory(path) {
   return !!getDirectory(path);
 }
 
-function navigatePath(relativePath) {
-    let parts = relativePath.split('/').filter(part => part !== '');
-    let currentParts = fileSystemState.currentPath.split('/').filter(part => part !== '');
-
-    for (let part of parts) {
-        if (part === "..") {
-            currentParts.pop();
-        } else {
-            currentParts.push(part);
-        }
-    }
-    const potentialPath = currentParts.join('/') + '/';
-    return isDirectory(potentialPath) ? potentialPath : fileSystemState.currentPath;
-}
-
 function getAbsolutePath(path) {
+  // Replace the home alias with the root '/'
   let newPath = path.replace(homeAliasRE, '/');
-  let isPathRelative = newPath[0] !== absolutePrefix;
+  const isPathRelative = newPath[0] !== absolutePrefix;
+
+  // If the path is relative, prepend the current directory path
   if (isPathRelative) {
-    newPath = fileSystemState.currentPath + '/' + path;
+    newPath = fileSystemState.currentPath + '/' + newPath;
   }
-  return newPath
+
+  // Normalize the path to resolve '..' and '.'
+  // Split the path into parts, filter out any empty parts or '.',
+  // and process '..' by removing the preceding part
+  const pathParts = newPath.split('/').reduce((parts, part) => {
+    if (part === '..') {
+      parts.pop(); // Go up one directory (remove the last part)
+    } else if (part !== '' && part !== '.') {
+      parts.push(part); // Add the part to the path
+    }
+    return parts;
+  }, []);
+
+  // Join the parts back into a normalized path
+  return '/' + pathParts.join('/');
 }
+
 
 export default {
     fileSystemState,
     rootPath,
     getAbsolutePath,
     isDirectory,
-    getDirectory,
-    navigatePath
+    getDirectory
 };
