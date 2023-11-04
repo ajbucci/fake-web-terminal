@@ -53,6 +53,7 @@ inputCmd.addEventListener('keydown', async function(e) {
 
     // Clear the input field for the next command
     inputCmd.value = '';
+    moveCaret(inputCmd, promptDiv);
 
     // Scroll to the bottom
     terminalDiv.scrollTop = terminalDiv.scrollHeight;

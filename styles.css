@@ -74,6 +74,10 @@ header, footer {
     padding: 0;
 }
 
+.header a {
+    color:rgb(255, 121, 198);
+}
+
 .lsdir {
     color:rgb(255, 121, 198);
 }

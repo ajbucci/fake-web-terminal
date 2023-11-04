@@ -60,32 +60,35 @@ function handleExit() {
 
 async function getCommandOutput(commandName, args = []) {
   const command = currentCommands.find((cmd) => cmd.name === commandName);
-  const output = await executeCommand(command, args);
+  let output = `Unknown command: ${commandName}. Type "help" for a list of commands.`
   const commandOutput = document.createElement('div');
-  let allowsHtml = command.allowsHtml;
-  if (allowsHtml) {
-    commandOutput.innerHTML = output;
+  
+  if (command) {
+    output = await executeCommand(command, args);
+    let allowsHtml = command.allowsHtml;
+    if (allowsHtml) {
+      commandOutput.innerHTML = output;
+    } else {
+      commandOutput.textContent = output;
+    }
   } else {
     commandOutput.textContent = output;
   }
+  
   return commandOutput;
 }
 
 async function executeCommand(command, args = []) {
-  if (command) {
-    if (command.commands) {
-      // If the command has subcommands
-      commandContextStack.push(commandName);
-      currentCommands = [...command.commands, ...universalCommands];
-    }
-    let result = command.execute(args);
-    if (result instanceof Promise) {
-      result = await result;
-    }
-    return result;
-  } else {
-    return `Unknown command: ${commandName}. Type "help" for a list of commands.`
+  if (command.commands) {
+    // If the command has subcommands
+    commandContextStack.push(command);
+    currentCommands = [...command.commands, ...universalCommands];
   }
+  let result = command.execute(args);
+  if (result instanceof Promise) {
+    result = await result;
+  }
+  return result;
 }
 
 export {getCommandOutput, currentCommands};
