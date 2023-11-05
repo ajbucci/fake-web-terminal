@@ -18,6 +18,9 @@
     --tn-background: #1A1B26;
     --tn-foreground: #C0CAF5;
     --tn-cursor: #C0CAF5;
+    --site-bg: var(--tn-black);
+    --nav-text: var(--tn-yellow);
+    --header-footer-bg: var(--tn-black);
 }
 @font-face {
     font-family: firamono-bold;
@@ -36,7 +39,7 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    background: rgb(40,42,54);
+    background: var(--site-bg);/*rgb(40,42,54);*/
 }
 
 body {
@@ -49,19 +52,20 @@ header {
     margin-bottom: 1rem;
     font-family: firamono-bold;
     font-size: 30px;
-    box-shadow: 0rem 0rem 1rem rgb(26, 24, 51);
+    box-shadow: 0.2rem 0.2rem 0rem var(--tn-magenta);*/
 }
 
 .topnav a {
     padding: 0.5em;
+    color: var(--nav-text);
 }
 footer {
     margin-top: 1em;
 }
 
 header, footer {
-    background-color: #494f72;
-    color: rgb(255, 242, 231);
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('night-river-cottage-woodcut-circles-blur.png');/*#494f72;*/
+    /*color: var(--tn-red);/*rgb(255, 242, 231);*/
     text-align: center;
     padding: 1rem;
     flex-shrink: 0;
@@ -72,7 +76,7 @@ header, footer {
     padding: 1em;
     cursor: text;  /* Cursor will always appear as text cursor in terminal area */
     overflow-y: auto;
-    background-image: url("night-river-cottage-woodcut-circles-blur.png");
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('night-river-cottage-woodcut-circles-blur.png');
 }
 
 .output, .header, input#cmd, .prompt, .suggestions {
@@ -92,22 +96,22 @@ header, footer {
 }
 
 .header a {
-    color:rgb(255, 121, 198);
+    color: var(--tn-red);
 }
 
 .lsdir {
-    color:rgb(255, 121, 198);
+    color: var(--tn-red);
 }
 #user {
-    color: rgb(80, 250, 123);
+    color: var(--tn-green);
 }
 
 #host {
-    color: rgb(189, 147, 249);
+    color: var(--tn-magenta);
 }
 
 #dir {
-    color: rgb(255, 121, 198);
+    color: var(--tn-red);
 }
 .output {
     white-space: pre;
