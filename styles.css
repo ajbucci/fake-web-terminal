@@ -1,3 +1,24 @@
+:root {
+    --tn-black: #414868;
+    --tn-red: #F7768E;
+    --tn-green: #9ECE6A;
+    --tn-yellow: #E0AF68;
+    --tn-blue: #7AA2F7;
+    --tn-magenta: #BB9AF7;
+    --tn-cyan: #7DCFFF;
+    --tn-white: #A9B1D6;
+    --tn-bright-black: #414868;
+    --tn-bright-red: #F7768E;
+    --tn-bright-green: #9ECE6A; 
+    --tn-bright-yellow: #E0AF68;
+    --tn-bright-blue: #7AA2F7;
+    --tn-bright-magenta: #BB9AF7;
+    --tn-bright-cyan: #7DCFFF;
+    --tn-bright-white: #C0CAF5;
+    --tn-background: #1A1B26;
+    --tn-foreground: #C0CAF5;
+    --tn-cursor: #C0CAF5;
+}
 @font-face {
     font-family: firamono-bold;
     src: url(FiraMono-Bold.ttf);
