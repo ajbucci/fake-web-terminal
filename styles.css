@@ -10,7 +10,7 @@
     --tn-bright-black: #414868;
     --tn-bright-red: #F7768E;
     --tn-bright-green: #9ECE6A; 
-    --tn-bright-yellow: #E0AF68;
+    --tn-bright-yellow: #ffcf68;
     --tn-bright-blue: #7AA2F7;
     --tn-bright-magenta: #BB9AF7;
     --tn-bright-cyan: #7DCFFF;
@@ -18,10 +18,13 @@
     --tn-background: #1A1B26;
     --tn-foreground: #C0CAF5;
     --tn-cursor: #C0CAF5;
-    --site-bg: var(--tn-black);
-    --nav-text: var(--tn-yellow);
-    --header-footer-bg: var(--tn-black);
+    --site-bg: var(--tn-background);
+    --nav-text: var(--tn-bright-yellow);
+    --header-footer-bg: var(--tn-background);
+    --terminal-bg: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('night-river-cottage-woodcut-circles-blur.png');
+    --side-margin: 7rem;
 }
+
 @font-face {
     font-family: firamono-bold;
     src: url(FiraMono-Bold.ttf);
@@ -44,46 +47,65 @@ body, html {
 
 body {
     display: flex;
-    padding: 1em;
     flex-direction: column;
 }
 
 header {
-    margin-bottom: 1rem;
-    font-family: firamono-bold;
-    font-size: 30px;
-    box-shadow: 0.2rem 0.2rem 0rem var(--tn-magenta);*/
+    font-family: firamono-medium;
+    font-size: 23px;
+    /*box-shadow: 0.2rem 0.2rem 0rem var(--tn-magenta);*/
+    display:inline-block;
+    margin: 0 var(--side-margin) 5rem var(--side-margin);
 }
 
-.topnav a {
-    padding: 0.5em;
+header .icon {
+    float: left;
     color: var(--nav-text);
+    margin: 0;
+    padding: 0;
 }
-footer {
-    margin-top: 1em;
+header a {
+    color: var(--nav-text);
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+header a:hover {
+    color: var(--tn-red);
+}
+header .topnav a {
+    padding-left: 2em;
+}
+header .topnav {
+    float: right;
+    margin-right: 1rem;
 }
 
 header, footer {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('night-river-cottage-woodcut-circles-blur.png');/*#494f72;*/
-    /*color: var(--tn-red);/*rgb(255, 242, 231);*/
+    background: var(--header-footer-bg);
     text-align: center;
-    padding: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     flex-shrink: 0;
 }
 
 .terminal {
     flex-grow: 1;  /* Makes the terminal div take all available space between header and footer */
-    padding: 1em;
+    margin: 0 var(--side-margin);
     cursor: text;  /* Cursor will always appear as text cursor in terminal area */
     overflow-y: auto;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('night-river-cottage-woodcut-circles-blur.png');
+    /*background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('night-river-cottage-woodcut-circles-blur.png');*/
+    background: var(--terminal-bg);
+    box-shadow: inset 0 0 1em 0.5em var(--tn-background);
+    border: 0.2em, solid, var(--tn-green);
+    padding: 1rem;
 }
 
 .output, .header, input#cmd, .prompt, .suggestions {
     background-color: transparent; 
     border: none;
     outline: none;
-    color: white;
+    color: var(--tn-foreground);
     font-family: monospace;  /* Use a monospace font for the input */
     font-size: 16px;  /* Adjust to the size you find appropriate */
     /*text-shadow: rgb(0, 255, 21) 1px 0 10px;*/
@@ -176,11 +198,4 @@ input#cmd {
     height: 100%;
     min-width: 1ch;
     /*animation: blink 0.5s step-end infinite;*/
-}
-
-@keyframes blink {
-    0% { content: "|" } 
-    25% { content: "/" }
-    50% { content: "-" }
-    75% { content: "\\" }
 }
