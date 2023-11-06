@@ -44,6 +44,7 @@ html, body {
     height: 100%;
     min-height: 100%;
     --tn-background-storm: var(--dark-mode-background-storm);
+    --tn-background: var(--dark-mode-background);
     --tn-foreground: var(--dark-mode-foreground);
     --tn-black: var(--dark-mode-black);
     --tn-red: var(--dark-mode-red);
@@ -59,6 +60,7 @@ html, body {
 }
 #toggleLights:checked ~ .color-scheme-wrapper{
     --tn-background-storm: var(--light-mode-background-storm);
+    --tn-background: var(--light-mode-background);
     --tn-foreground: var(--light-mode-foreground);
     --tn-black: var(--light-mode-black);
     --tn-red: var(--light-mode-red);
@@ -144,6 +146,13 @@ p {
     margin: 0;
 }
 
+footer {
+    color: var(--tn-foreground);
+    background-color: var(--tn-background);
+}
+footer a {
+    color: var(--tn-red);
+}
 /* Header */
 header {
     display: flex;
@@ -197,7 +206,6 @@ header a:hover {
 
 
 header, footer {
-    background: var(--header-footer-bg);
     text-align: center;
     padding-top: 1rem;
     padding-bottom: 1rem;
