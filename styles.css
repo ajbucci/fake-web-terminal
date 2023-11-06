@@ -61,6 +61,11 @@ header {
     margin: 0 var(--side-margin) 5rem var(--side-margin);
 }
 
+header .icon a.headshot {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 header .icon img.headshot {
    max-height: 100%;
    width: auto;
