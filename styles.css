@@ -61,16 +61,35 @@ header {
     margin: 0 var(--side-margin) 5rem var(--side-margin);
 }
 
-header .icon a.headshot {
+header .icon a.headshot, header .icon div.headshot-border {
     height: 100%;
     margin: 0;
     padding: 0;
 }
+
+header .icon div.headshot-border {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--tn-black);
+}
+
+header .icon div.headshot-border:hover {
+    background: linear-gradient(var(--tn-black), var(--tn-bright-yellow), var(--tn-black));
+}
 header .icon img.headshot {
-   max-height: 100%;
+   max-height: 95%;
    width: auto;
    height: auto;
+   /*border: 0.2rem solid var(--tn-black);
+   border-radius: 50%;*/
 }
+
+/*header .icon img.headshot:hover {
+    border: 0.2rem solid var(--tn-red);
+}*/
 header .icon a {
     padding-left: 1em;
 }
@@ -90,6 +109,12 @@ header a {
 }
 header a:hover {
     color: var(--tn-red);
+    background-image: linear-gradient(var(--tn-red), var(--tn-yellow));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    
 }
 header .topnav a {
     padding-left: 2em;
