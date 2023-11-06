@@ -80,7 +80,7 @@ header {
     height: auto;
     /*border: 0.2rem solid var(--tn-white);*/
     border-radius: 50%;
-    box-shadow: 0px 10px 50px -25px var(--tn-bright-yellow); /* x y blur spread */
+    box-shadow: 0px 20px 50px -20px var(--tn-black); /* x y blur spread */
 }
 #nametag {
     /*border: 0.1em solid var(--tn-bright-yellow);
