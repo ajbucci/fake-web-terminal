@@ -7,34 +7,46 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="headshot-box">
-            <a href="/" class="headshot-box">
-                <img src="headshot.png" id="headshot">
-            </a>
-            <a href="/" id="nametag">AJ Bucci</a>
-        </div>      
-        <div class="topnav">
-            <a href="/about">About</a>
-            <a href="/projects">Projects</a>
-            <a href="/cv">CV</a>
-            <a href="/contact">Contact</a>
-        </div>
-    </header>
-    <div class="terminal">
-        <p class="header">Welcome to my virtual CV, handcrafted with vanilla JavaScript! <a>(source)</a></p>
-        <p class="header">Download a traditional PDF version of my resume <a href="resume.pdf" target="_blank">here</a>.</p>
-        <p class="header">Or explore my experience and skills interactively through this terminal.</p>
-        <p class="header">Type 'help' to begin!</p>
-        <div class="output"></div>
-        <div class="line">
-            <div class="prompt"><span id="user">cv</span><span>@</span><span id="host">ajbucci.com&nbsp;</span><span id="dir">~</span><span>&nbsp;$&nbsp;</span></div>
-            <input class="command" type="text" id="cmd" />
-            <span class="fake-caret"></span>
-        </div>
-        <div class="suggestions"></div>        
+    <input type="checkbox" id="toggleLights" />
+    <div id="lightsBorder">
+        <label for="toggleLights" id="lightsIcon"></label>
     </div>
-    <footer></footer>
+    <div class="color-scheme-wrapper">
+        <header>
+            <div class="headshot-box">
+                <a href="/" class="headshot-box">
+                    <img src="headshot.png" id="headshot">
+                </a>
+                <a href="/" id="nametag">AJ Bucci</a>
+            </div>      
+            <div class="topnav">
+                <a href="/about">About</a>
+                <a href="/projects">Projects</a>
+                <a href="/cv">CV</a>
+                <a href="/contact">Contact</a>      
+            </div>
+        </header>
+        <div class="terminal">
+            <p class="header">Welcome to my virtual CV, handcrafted with vanilla JavaScript! <a>(source)</a></p>
+            <p class="header">Download a traditional PDF version of my resume <a href="resume.pdf" target="_blank">here</a>.</p>
+            <p class="header">Or explore my experience and skills interactively through this terminal.</p>
+            <p class="header">Type 'help' to begin!</p>
+            <div class="output"></div>
+            <div class="line">
+                <div class="prompt">
+                    <span id="user">cv</span>
+                    <span>@</span>
+                    <span id="host">ajbucci.com&nbsp;</span>
+                    <span id="dir">~</span>
+                    <span>&nbsp;$&nbsp;</span>
+                </div>
+                <input class="command" type="text" id="cmd" />
+                <span class="fake-caret"></span>
+            </div>
+            <div class="suggestions"></div>        
+        </div>
+        <footer></footer>
+    </div>
     <script type="module" src="js/index.js"></script>
 </body>
 </html>

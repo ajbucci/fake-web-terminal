@@ -1,28 +1,122 @@
 :root {
-    --tn-black: #414868;
-    --tn-red: #F7768E;
-    --tn-green: #9ECE6A;
-    --tn-yellow: #E0AF68;
-    --tn-blue: #7AA2F7;
-    --tn-magenta: #BB9AF7;
-    --tn-cyan: #7DCFFF;
-    --tn-white: #A9B1D6;
-    --tn-bright-black: #414868;
-    --tn-bright-red: #F7768E;
-    --tn-bright-green: #9ECE6A; 
-    --tn-bright-yellow: #ffcf68;
-    --tn-bright-blue: #7AA2F7;
-    --tn-bright-magenta: #BB9AF7;
-    --tn-bright-cyan: #7DCFFF;
-    --tn-bright-white: #C0CAF5;
-    --tn-background: #1A1B26;
-    --tn-foreground: #C0CAF5;
-    --tn-cursor: #C0CAF5;
-    --site-bg: var(--tn-background);
-    --nav-text: var(--tn-bright-yellow);
-    --header-footer-bg: var(--tn-background);
-    --terminal-bg: var(--tn-background);/*linear-gradient(#1A1B26 20%, rgba(0, 0, 0, 0), #1A1B26), url('night-river-cottage-woodcut-circles-blur.png');*/
     --side-margin: 7rem;
+    min-height:100vh;
+    --dark-mode-red: #F7768E;
+    --dark-mode-orange: #ff9e64;
+    --dark-mode-yellow: #E0AF68;
+    --dark-mode-green: #9ECE6A;
+    --dark-mode-cyan: #7DCFFF;
+    --dark-mode-blue: #7AA2F7;
+    --dark-mode-magenta: #BB9AF7;
+    --dark-mode-bright-white: #C0CAF5;
+    --dark-mode-white: #A9B1D6;
+    --dark-mode-foreground: #C0CAF5;
+    --dark-mode-black: #414868;
+    --dark-mode-background-storm: #24283b;
+    --dark-mode-background: #1A1B26;
+    --dark-mode-bright-yellow: #ffcf68;
+    --light-mode-background: #fff6ed;
+    --light-mode-background-storm: #fffefa;
+    --light-mode-foreground: #595959;
+    --light-mode-black: #000000;
+    --light-mode-red: #ea6c6d;
+    --light-mode-yellow: #f2ae49;
+    --light-mode-bright-yellow: #f2ae49;
+    --light-mode-green: #6cbf43;
+    --light-mode-magenta: #9e75c7;
+}
+
+html, body {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
+}
+
+.color-scheme-wrapper{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    min-height: 100%;
+    --tn-background-storm: var(--dark-mode-background-storm);
+    --tn-foreground: var(--dark-mode-foreground);
+    --tn-black: var(--dark-mode-black);
+    --tn-red: var(--dark-mode-red);
+    --tn-yellow: var(--dark-mode-yellow);
+    --tn-bright-yellow: var(--dark-mode-bright-yellow);
+    --tn-green: var(--dark-mode-green);
+    --tn-magenta: var(--dark-mode-magenta);
+    --header-footer-bg: var(--tn-background-storm);
+    --nav-text: var(--tn-bright-yellow);
+    --site-bg: var(--tn-background-storm);
+    background: var(--site-bg);
+    /*linear-gradient(#1A1B26 20%, rgba(0, 0, 0, 0), #1A1B26), url('night-river-cottage-woodcut-circles-blur.png');*/
+}
+#toggleLights:checked ~ .color-scheme-wrapper{
+    --tn-background-storm: var(--light-mode-background-storm);
+    --tn-foreground: var(--light-mode-foreground);
+    --tn-black: var(--light-mode-black);
+    --tn-red: var(--light-mode-red);
+    --tn-yellow: var(--light-mode-yellow);
+    --tn-bright-yellow: var(--light-mode-bright-yellow);
+    --tn-green: var(--light-mode-green);
+    --tn-magenta: var(--light-mode-magenta);
+    --header-footer-bg: var(--tn-background-storm);
+    --nav-text: var(--tn-bright-yellow);
+    --site-bg: var(--tn-background-storm);
+    background: var(--site-bg);
+}
+#toggleLights {
+    position: absolute;
+    display: none;
+}
+#lightsBorder {
+    position:absolute;
+    right: 1.5rem;
+    top: 1.9rem;
+    height: 3em;
+    width: 3em;
+    border-radius: 20%;
+    border: solid 1px black;
+}
+#toggleLights + #lightsBorder {
+    background-color: var(--dark-mode-background);
+    border-color: var(--dark-mode-yellow);
+}
+#toggleLights:checked + #lightsBorder {
+    background-color: var(--light-mode-background);
+    border-color: var(--light-mode-yellow);
+}
+#lightsIcon {
+    position:absolute;
+    top: 0.5em;
+    left: 0.5em;
+}
+#lightsIcon::before {
+    position: absolute;
+    content: " ";
+    height: 2em;
+    width: 2em;
+    mask-image: url('lightMode.svg');
+    mask-repeat: no-repeat;
+    mask-size: cover;
+}
+#toggleLights + #lightsBorder #lightsIcon::before {
+    mask-image: url('lightMode.svg');
+    mask-repeat: no-repeat;
+    mask-size: cover;
+    background-color: var(--dark-mode-bright-yellow);
+}
+#toggleLights:checked + #lightsBorder #lightsIcon::before {
+    mask-image: url('darkMode.svg');
+    mask-repeat: no-repeat;
+    mask-size: cover;
+    background-color: var(--light-mode-bright-yellow);
 }
 
 @font-face {
@@ -39,11 +133,6 @@
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-    padding: 0;
-    height: 100%;
     background: var(--site-bg);/*rgb(40,42,54);*/
     font-family: firamono-regular;
     font-size: 16px;
@@ -63,7 +152,7 @@ header {
     height: 5rem;
     margin: 0 var(--side-margin) 5rem var(--side-margin);
     font-family: firamono-medium;
-    font-size: 25px;
+    font-size: 20px;
     /*box-shadow: 0.2rem 0.2rem 0rem var(--tn-magenta);*/
 }
 
@@ -80,7 +169,7 @@ header {
     height: auto;
     /*border: 0.2rem solid var(--tn-white);*/
     border-radius: 50%;
-    box-shadow: 0px 20px 50px -20px var(--tn-black); /* x y blur spread */
+    box-shadow: 0px 5px 35px -25px var(--tn-foreground); /* x y blur spread */
 }
 #nametag {
     /*border: 0.1em solid var(--tn-bright-yellow);
@@ -206,7 +295,7 @@ input#cmd {
     background-color: var(--tn-foreground);
     font-family: monospace;
     font-size: 16px;
-    color: var(--tn-background);
+    color: var(--tn-background-storm);
     height: 100%;
     min-width: 1ch;
     animation: blink 1s step-end infinite;
