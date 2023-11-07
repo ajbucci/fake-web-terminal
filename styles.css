@@ -1,5 +1,4 @@
 :root {
-    --side-margin: 7rem;
     min-height:100vh;
     --dark-mode-red: #F7768E;
     --dark-mode-orange: #ff9e64;
@@ -34,7 +33,25 @@ html, body {
     margin: 0;
     padding: 0;
 }
-
+.content {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+.main {
+    width: 80%;
+    display: flex;
+}
+header .main {
+    flex-direction: row;
+    align-items: center;
+}
+.left {
+    width: 10%;
+}
+.right {
+    width: 10%;
+}
 .color-scheme-wrapper{
     display: flex;
     flex-direction: column;
@@ -94,11 +111,11 @@ html, body {
 }
 #lightModeSvg, #darkModeSvg {
     position: absolute;
-    right: 1.5em;
-    top: 1.5em;
+    right: 2%;
+    top: 1.5rem;
     cursor: pointer;
-    height: 2.5em;
-    width: 2.5em;
+    height: 2.5rem;
+    width: 2.5rem;
     border-radius: 20%;
     padding: 0.5em;
 }
@@ -154,27 +171,17 @@ footer a {
 }
 /* Header */
 header {
+    --header-height: 5rem;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 5rem;
-    margin: 0 var(--side-margin) 5rem var(--side-margin);
+    padding: 1rem 0 1rem 0;
+    height: var(--header-height);
     font-family: firamono-medium;
     font-size: 20px;
     /*box-shadow: 0.2rem 0.2rem 0rem var(--tn-magenta);*/
 }
-
-.headshot-box {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-}
 #headshot {
-    max-height: 100%;
-    width: auto;
-    height: auto;
+    height: var(--header-height);
+    width: var(--header-height);
     /*border: 0.2rem solid var(--tn-white);*/
     border-radius: 50%;
     box-shadow: 0px 5px 35px -25px var(--tn-foreground); /* x y blur spread */
@@ -184,6 +191,8 @@ header {
     border-radius: 0 25% 0 25%;
     padding: 0.5em;*/
     margin-left: 1em;
+    flex-grow: 1;
+    text-align: left;
 }
 
 header a {
@@ -200,20 +209,19 @@ header a:hover {
 }
 
 .topnav a {
-    padding-left: 2em;
+    margin-left: 2em;
 }
-
 
 header, footer {
     text-align: center;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
     flex-shrink: 0;
 }
 
+footer {
+    padding: 1rem 0 1rem 0;
+}
 .terminal {
     flex-grow: 1;  /* Makes the terminal div take all available space between header and footer */
-    margin: 0 var(--side-margin);
     cursor: text;  /* Cursor will always appear as text cursor in terminal area */
     overflow-y: auto;
     /*background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('night-river-cottage-woodcut-circles-blur.png');*/
@@ -311,4 +319,8 @@ input#cmd {
 @keyframes blink {
     0% {background-color: var(--tn-foreground);}
     50% {background-color: transparent; color: var(--tn-foreground);}
+}
+
+@media screen and (max-width: 800px) {
+    
 }
