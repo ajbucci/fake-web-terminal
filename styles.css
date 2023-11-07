@@ -179,6 +179,12 @@ header {
     font-size: 20px;
     /*box-shadow: 0.2rem 0.2rem 0rem var(--tn-magenta);*/
 }
+#headshot-badge {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    align-items: center;
+}
 #headshot {
     height: var(--header-height);
     width: var(--header-height);
@@ -191,7 +197,6 @@ header {
     border-radius: 0 25% 0 25%;
     padding: 0.5em;*/
     margin-left: 1em;
-    flex-grow: 1;
     text-align: left;
 }
 
@@ -208,6 +213,11 @@ header a:hover {
     color:transparent;
 }
 
+.topnav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
 .topnav a {
     margin-left: 2em;
 }
@@ -322,5 +332,22 @@ input#cmd {
 }
 
 @media screen and (max-width: 800px) {
-    
+    .topnav {
+        flex-direction: column;
+        align-items: flex-start;
+        & a {
+            margin-left: 0;
+            margin-top: 0.3rem;
+            margin-right: 2rem;
+        }
+    }
+    #headshot-badge {
+        flex-direction: column;
+    }
+    #nametag {
+        margin-left: 0;
+    }
+    header .main {
+        justify-content: space-between;
+    }
 }
