@@ -73,67 +73,53 @@ html, body {
     --site-bg: var(--tn-background-storm);
     background: var(--site-bg);
 }
+
 #toggleLights {
     position: absolute;
     display: none;
+    & ~ label #lightModeSvg {
+        display: none;
+    }
+    & ~ label #darkModeSvg {
+        display: block;
+    }
 }
-#lightsBorder {
-    position:absolute;
-    right: 1.5rem;
-    top: 1.9rem;
-    height: 3em;
-    width: 3em;
-    border-radius: 20%;
-    border: solid 1px black;
+#toggleLights:checked {
+    & ~ label #lightModeSvg {
+        display: block;
+    }
+    & ~ label #darkModeSvg {
+        display: none;
+    }   
 }
-#toggleLights + #lightsBorder:hover {
-    cursor: pointer;
-    transition-property: border;
-    transition-duration: 1s;
-    border-color: var(--dark-mode-yellow);
-}
-#toggleLights:checked + #lightsBorder:hover {
-    cursor: pointer;
-    transition-property: border;
-    transition-duration: 1s;
-    border-color: var(--light-mode-yellow);
-}
-#toggleLights + #lightsBorder {
-    background-color: var(--dark-mode-background);
-    border-color: var(--dark-mode-background);
-}
-#toggleLights:checked + #lightsBorder {
-    background-color: var(--light-mode-background);
-    border-color: var(--light-mode-background);
-}
-#lightsIcon {
-    position:absolute;
-    cursor: pointer;
-    top: 0.5em;
-    left: 0.5em;
-}
-#lightsIcon::before {
+#lightModeSvg, #darkModeSvg {
     position: absolute;
-    content: " ";
-    height: 2em;
-    width: 2em;
-    mask-image: url('lightMode.svg');
-    mask-repeat: no-repeat;
-    mask-size: cover;
+    right: 1.5em;
+    top: 1.5em;
+    cursor: pointer;
+    height: 2.5em;
+    width: 2.5em;
+    border-radius: 20%;
+    padding: 0.5em;
 }
-#toggleLights + #lightsBorder #lightsIcon::before {
-    mask-image: url('lightMode.svg');
-    mask-repeat: no-repeat;
-    mask-size: cover;
-    background-color: var(--dark-mode-bright-yellow);
+#lightModeSvg:hover {
+    border: solid 1px var(--light-mode-bright-yellow);
+    transition: border 1s;
 }
-#toggleLights:checked + #lightsBorder #lightsIcon::before {
-    mask-image: url('darkMode.svg');
-    mask-repeat: no-repeat;
-    mask-size: cover;
-    background-color: var(--light-mode-bright-yellow);
+#darkModeSvg:hover {
+    border: solid 1px var(--dark-mode-bright-yellow);
+    transition: border 1s;
 }
-
+#darkModeSvg {
+    color: var(--dark-mode-bright-yellow);
+    border: solid 1px transparent;
+    background-color: var(--dark-mode-background);
+}
+#lightModeSvg {
+    color: var(--light-mode-bright-yellow);
+    border: solid 1px transparent;
+    background-color: var(--light-mode-background);
+}
 @font-face {
     font-family: firamono-bold;
     src: url(FiraMono-Bold.ttf);
