@@ -14,15 +14,15 @@
     --dark-mode-background-storm: #24283b;
     --dark-mode-background: #1A1B26;
     --dark-mode-bright-yellow: #ffcf68;
-    --light-mode-background: #fff6ed;
+    --light-mode-background: #ffeddb;
     --light-mode-background-storm: #fffefa;
-    --light-mode-foreground: #595959;
+    --light-mode-foreground: #3c3c3c;
     --light-mode-black: #000000;
-    --light-mode-red: #ea6c6d;
-    --light-mode-yellow: #f2ae49;
-    --light-mode-bright-yellow: #f2ae49;
-    --light-mode-green: #6cbf43;
-    --light-mode-magenta: #9e75c7;
+    --light-mode-red: #fe6161;
+    --light-mode-yellow: #f99d13;
+    --light-mode-bright-yellow: #f99d13;
+    --light-mode-green: #67ce34;
+    --light-mode-magenta: #9959d9;
 }
 
 html, body {
