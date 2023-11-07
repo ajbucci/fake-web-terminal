@@ -86,13 +86,25 @@ html, body {
     border-radius: 20%;
     border: solid 1px black;
 }
+#toggleLights + #lightsBorder:hover {
+    cursor: pointer;
+    transition-property: border;
+    transition-duration: 1s;
+    border-color: var(--dark-mode-yellow);
+}
+#toggleLights:checked + #lightsBorder:hover {
+    cursor: pointer;
+    transition-property: border;
+    transition-duration: 1s;
+    border-color: var(--light-mode-yellow);
+}
 #toggleLights + #lightsBorder {
     background-color: var(--dark-mode-background);
-    border-color: var(--dark-mode-yellow);
+    border-color: var(--dark-mode-background);
 }
 #toggleLights:checked + #lightsBorder {
     background-color: var(--light-mode-background);
-    border-color: var(--light-mode-yellow);
+    border-color: var(--light-mode-background);
 }
 #lightsIcon {
     position:absolute;
@@ -188,17 +200,33 @@ header {
 }
 
 header a {
+    position: relative;
     color: var(--nav-text);
     text-decoration: none;
 }
-
-header a:hover {
+header a::before {
+    position: absolute;
+    content: "";
+    inset: 0; /* same as { top: 0; right: 0; bottom: 0; left: 0; } */
+    background-image: linear-gradient(var(--tn-red), var(--tn-yellow));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.25s linear;
+}
+  
+header a:hover::before {
+opacity: 1;
+}
+/*header a:hover {
     color: var(--tn-red);
     background-image: linear-gradient(var(--tn-red), var(--tn-yellow));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-}
+}*/
 
 .topnav a {
     padding-left: 2em;
