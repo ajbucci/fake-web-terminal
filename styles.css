@@ -108,6 +108,7 @@ html, body {
 }
 #lightsIcon {
     position:absolute;
+    cursor: pointer;
     top: 0.5em;
     left: 0.5em;
 }
