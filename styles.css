@@ -174,7 +174,7 @@ header {
     --header-height: 5rem;
     display: flex;
     padding: 1rem 0 1rem 0;
-    height: var(--header-height);
+    min-height: var(--header-height);
     font-family: firamono-medium;
     font-size: 20px;
     /*box-shadow: 0.2rem 0.2rem 0rem var(--tn-magenta);*/
@@ -335,6 +335,7 @@ input#cmd {
     .topnav {
         flex-direction: column;
         align-items: flex-start;
+        margin-top: 0.5rem;
         & a {
             margin-left: 0;
             margin-top: 0.3rem;
@@ -343,11 +344,16 @@ input#cmd {
     }
     #headshot-badge {
         flex-direction: column;
+        margin-top: 0.5rem;
     }
     #nametag {
         margin-left: 0;
     }
-    header .main {
-        justify-content: space-between;
+    header {
+        padding-top: 0;
+        & .main {
+            justify-content: space-between;
+            align-items: flex-end;
+        }
     }
 }
