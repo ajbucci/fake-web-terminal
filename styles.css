@@ -23,6 +23,8 @@
     --light-mode-bright-yellow: #f99d13;
     --light-mode-green: #67ce34;
     --light-mode-magenta: #9959d9;
+    --header-height: 5rem;
+    --header-top-bottom-padding: 1rem;
 }
 
 html, body {
@@ -112,10 +114,11 @@ header .main {
 #lightModeSvg, #darkModeSvg {
     position: absolute;
     right: 2%;
-    top: 1.5rem;
+    --dark-light-svg-height: 1.5rem;
+    top: calc(( var(--header-height) + var(--header-top-bottom-padding) - var(--dark-light-svg-height) ) / 2 );
     cursor: pointer;
-    height: 2.5rem;
-    width: 2.5rem;
+    height: var(--dark-light-svg-height);
+    width: var(--dark-light-svg-height);
     border-radius: 20%;
     padding: 0.5em;
 }
@@ -171,9 +174,8 @@ footer a {
 }
 /* Header */
 header {
-    --header-height: 5rem;
     display: flex;
-    padding: 1rem 0 1rem 0;
+    padding: var(--header-top-bottom-padding) 0;
     min-height: var(--header-height);
     font-family: firamono-medium;
     font-size: 20px;
@@ -355,5 +357,8 @@ input#cmd {
             justify-content: space-between;
             align-items: flex-end;
         }
+    }
+    #lightModeSvg, #darkModeSvg {
+        top: 0.8rem;
     }
 }
