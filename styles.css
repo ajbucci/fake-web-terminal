@@ -15,10 +15,10 @@
     --dark-mode-background: #1A1B26;
     --dark-mode-bright-yellow: #ffcf68;
     --light-mode-background: #ffeddb;
-    --light-mode-background-storm: #fffefa;
+    --light-mode-background-storm: #fffffe;
     --light-mode-foreground: #3c3c3c;
     --light-mode-black: #000000;
-    --light-mode-red: #fe6161;
+    --light-mode-red: rgb(248, 31, 49);
     --light-mode-yellow: #f99d13;
     --light-mode-bright-yellow: #f99d13;
     --light-mode-green: #67ce34;
@@ -43,10 +43,6 @@ html, body {
 .main {
     width: 80%;
     display: flex;
-}
-header .main {
-    flex-direction: row;
-    align-items: center;
 }
 .left {
     width: 10%;
@@ -102,14 +98,14 @@ header .main {
     & ~ label #darkModeSvg {
         display: block;
     }
-}
-#toggleLights:checked {
-    & ~ label #lightModeSvg {
-        display: block;
+    &:checked {
+        & ~ label #lightModeSvg {
+            display: block;
+        }
+        & ~ label #darkModeSvg {
+            display: none;
+        } 
     }
-    & ~ label #darkModeSvg {
-        display: none;
-    }   
 }
 #lightModeSvg, #darkModeSvg {
     position: absolute;
@@ -122,23 +118,24 @@ header .main {
     border-radius: 20%;
     padding: 0.5em;
 }
-#lightModeSvg:hover {
-    border: solid 1px var(--light-mode-bright-yellow);
-    transition: border 1s;
-}
-#darkModeSvg:hover {
-    border: solid 1px var(--dark-mode-bright-yellow);
-    transition: border 1s;
-}
+
 #darkModeSvg {
     color: var(--dark-mode-bright-yellow);
     border: solid 1px transparent;
     background-color: var(--dark-mode-background);
+    &:hover {
+        border: solid 1px var(--dark-mode-bright-yellow);
+        transition: border 1s;
+    }
 }
 #lightModeSvg {
     color: var(--light-mode-bright-yellow);
     border: solid 1px transparent;
     background-color: var(--light-mode-background);
+    &:hover {
+        border: solid 1px var(--light-mode-bright-yellow);
+        transition: border 1s;
+    }
 }
 @font-face {
     font-family: firamono-bold;
@@ -154,7 +151,7 @@ header .main {
 }
 
 body {
-    background: var(--site-bg);/*rgb(40,42,54);*/
+    background: var(--site-bg);
     font-family: firamono-regular;
     font-size: 16px;
     color: var(--tn-foreground);
@@ -168,69 +165,74 @@ p {
 footer {
     color: var(--tn-foreground);
     background-color: var(--tn-background);
-}
-footer a {
-    color: var(--tn-red);
+    & a {
+        color: var(--tn-red);
+    }
 }
 /* Header */
 header {
+    text-align: center;
+    flex-shrink: 0;
     display: flex;
     padding: var(--header-top-bottom-padding) 0;
     min-height: var(--header-height);
     font-family: firamono-medium;
     font-size: 20px;
-    /*box-shadow: 0.2rem 0.2rem 0rem var(--tn-magenta);*/
+    & .main {
+        flex-direction: row;
+        align-items: center;
+    }
+    & a {
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+        background-image: linear-gradient(var(--tn-red), var(--tn-yellow));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: var(--tn-bright-yellow);
+        &:hover {
+            color:transparent;
+        }
+    }
+    & .topnav {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        & ul {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            list-style: none;
+            & li:not(:first-child) {
+                margin-left: 2rem;
+            }
+        }
+    }
 }
 #headshot-badge {
     display: flex;
     flex-direction: row;
     flex-grow: 1;
     align-items: center;
-}
-#headshot {
-    height: var(--header-height);
-    width: var(--header-height);
-    /*border: 0.2rem solid var(--tn-white);*/
-    border-radius: 50%;
-    box-shadow: 0px 5px 35px -25px var(--tn-foreground); /* x y blur spread */
-}
-#nametag {
-    /*border: 0.1em solid var(--tn-bright-yellow);
-    border-radius: 0 25% 0 25%;
-    padding: 0.5em;*/
-    margin-left: 1em;
-    text-align: left;
-}
-
-header a {
-    text-decoration: none;
-    transition: color 0.3s ease-in-out;
-    background-image: linear-gradient(var(--tn-red), var(--tn-yellow));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: var(--tn-bright-yellow);
-}
-
-header a:hover {
-    color:transparent;
-}
-
-.topnav {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-}
-.topnav a {
-    margin-left: 2em;
-}
-
-header, footer {
-    text-align: center;
-    flex-shrink: 0;
+    & #headshot {
+        height: var(--header-height);
+        width: var(--header-height);
+        /*border: 0.2rem solid var(--tn-white);*/
+        border-radius: 50%;
+        box-shadow: 0px 5px 35px -25px var(--tn-foreground);
+    }
+    & #nametag {
+        border: 0.1em solid var(--tn-bright-yellow);
+        border-radius: 20% 0 20% 0%;
+        padding: 0.5em;
+        margin-left: 1em;
+        text-align: left;
+    }
 }
 
 footer {
     padding: 1rem 0 1rem 0;
+    text-align: center;
+    flex-shrink: 0;
 }
 .terminal {
     flex-grow: 1;  /* Makes the terminal div take all available space between header and footer */
@@ -239,94 +241,84 @@ footer {
     /*background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('night-river-cottage-woodcut-circles-blur.png');*/
     /*background: var(--terminal-bg);*/
     /*box-shadow: inset 0 0 1em 0.5em var(--tn-background);*/
-    padding: 1rem;*/
+    padding: 1rem;
+
+    & .output, .header, input#cmd, .prompt, .suggestions {
+        background-color: transparent; 
+        border: none;
+        outline: none;
+        color: var(--tn-foreground);
+        font-family: monospace;  /* Use a monospace font for the input */
+        font-size: 16px;  /* Adjust to the size you find appropriate */
+        /*text-shadow: rgb(0, 255, 21) 1px 0 10px;*/
+    }
+    & a {
+        color: var(--tn-red);
+    }
+    & .lsdir {
+        color: var(--tn-red);
+    }
+    & #user {
+        color: var(--tn-green);
+    }
+    & #host {
+        color: var(--tn-magenta);
+    }
+    & #dir {
+        color: var(--tn-red);
+    }
+    & .output {
+        white-space: pre;
+    }
+    & .suggestions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px; /* space between suggestions */
+        margin-top: 5px;
+    }
+    & .suggestion-item {
+        padding: 2px 8px; /* padding for each command suggestion */
+        cursor: pointer;
+        /* Additional styles for the suggestion items */
+    }
+    & input#cmd {
+        pointer-events: none;  /* Makes the input non-selectable on its own */
+        caret-color: transparent;
+        padding: 0px;
+        /*line-height: 22px;*/
+        width: 100%;
+        /*height: 22px;*/
+    }
+    & .prompt {
+        display: inline-flex;
+        align-items: center;
+    }
+    & .input {
+        appearance: none;
+        display: flex;
+        padding: 0;
+        margin: 0;
+        border: none;
+    }
+    & .line {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        /*height: 22px; /* need to set this programatically... firefox does not behave properly with the input text box */
+    }
+    & .fake-caret {
+        display: inline-block;
+        position: absolute;
+        background-color: var(--tn-foreground);
+        font-family: monospace;
+        font-size: 16px;
+        color: var(--tn-background-storm);
+        height: 100%;
+        min-width: 1ch;
+        animation: blink 1s step-end infinite;
+    }
 }
 
-.output, .header, input#cmd, .prompt, .suggestions {
-    background-color: transparent; 
-    border: none;
-    outline: none;
-    color: var(--tn-foreground);
-    font-family: monospace;  /* Use a monospace font for the input */
-    font-size: 16px;  /* Adjust to the size you find appropriate */
-    /*text-shadow: rgb(0, 255, 21) 1px 0 10px;*/
-}
-
-.terminal a {
-    color: var(--tn-red);
-}
-
-.lsdir {
-    color: var(--tn-red);
-}
-#user {
-    color: var(--tn-green);
-}
-
-#host {
-    color: var(--tn-magenta);
-}
-
-#dir {
-    color: var(--tn-red);
-}
-.output {
-    white-space: pre;
-}
-
-.suggestions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px; /* space between suggestions */
-    margin-top: 5px;
-}
-
-.suggestion-item {
-    padding: 2px 8px; /* padding for each command suggestion */
-    cursor: pointer;
-    /* Additional styles for the suggestion items */
-}
-
-input#cmd {
-    pointer-events: none;  /* Makes the input non-selectable on its own */
-    caret-color: transparent;
-    padding: 0px;
-    /*line-height: 22px;*/
-    width: 100%;
-    /*height: 22px;*/
-}
-
-.prompt {
-    display: inline-flex;
-    align-items: center;
-}
-
-.input {
-    appearance: none;
-    display: flex;
-    padding: 0;
-    margin: 0;
-    border: none;
-}
-
-.line {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    /*height: 22px; /* need to set this programatically... firefox does not behave properly with the input text box */
-}
-
-.fake-caret {
-    display: inline-block;
-    position: absolute;
-    background-color: var(--tn-foreground);
-    font-family: monospace;
-    font-size: 16px;
-    color: var(--tn-background-storm);
-    height: 100%;
-    min-width: 1ch;
-    animation: blink 1s step-end infinite;
-}
 
 @keyframes blink {
     0% {background-color: var(--tn-foreground);}
@@ -334,27 +326,39 @@ input#cmd {
 }
 
 @media screen and (max-width: 800px) {
-    .topnav {
-        flex-direction: column;
-        align-items: flex-start;
-        margin-top: 0.5rem;
-        & a {
-            margin-left: 0;
-            margin-top: 0.3rem;
-            margin-right: 2rem;
-        }
-    }
+
     #headshot-badge {
         flex-direction: column;
         margin-top: 0.5rem;
+        flex-grow: 0;
+        & #nametag {
+            margin-left: 0;
+            padding-bottom: 0;
+            border: none;
+        }
     }
-    #nametag {
-        margin-left: 0;
-    }
+
     header {
         padding-top: 0;
+        .topnav {
+            align-items: flex-end;
+            & ul {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-top: 0.5rem;
+                margin-bottom: 0;
+                & li:not(:first-child) {
+                    margin-left: 0;
+                    margin-top: 0.3rem;
+                    margin-right: 2rem;
+                }
+                & .active {
+                    color: transparent;
+                }
+            }
+        }
         & .main {
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: flex-end;
         }
     }
