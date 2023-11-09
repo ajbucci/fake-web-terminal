@@ -39,6 +39,8 @@ html, body {
     display: flex;
     flex-direction: row;
     flex-grow: 1;
+    font-size: 15px;
+    font-family: jetbrains;
 }
 .main {
     width: 80%;
@@ -136,6 +138,10 @@ html, body {
         border: solid 1px var(--light-mode-bright-yellow);
         transition: border 1s;
     }
+}
+@font-face {
+    font-family: jetbrains;
+    src: url(JetBrainsMono-VariableFont_wght.ttf);
 }
 @font-face {
     font-family: firamono-bold;
@@ -248,15 +254,15 @@ footer {
     /*background: var(--terminal-bg);*/
     /*box-shadow: inset 0 0 1em 0.5em var(--tn-background);*/
     padding: 1rem;
-
-    & .output, .header, input#cmd, .prompt, .suggestions {
-        background-color: transparent; 
-        border: none;
+    font-family: jetbrains;
+    font-size: 15px;
+    color: var(--tn-foreground);
+    & input#cmd {
+        font: inherit;
+        color: inherit;
         outline: none;
-        color: var(--tn-foreground);
-        font-family: monospace;  /* Use a monospace font for the input */
-        font-size: 16px;  /* Adjust to the size you find appropriate */
-        /*text-shadow: rgb(0, 255, 21) 1px 0 10px;*/
+        border: none;
+        background-color: transparent;
     }
     & a {
         color: var(--tn-red);
@@ -285,6 +291,10 @@ footer {
     & .suggestion-item {
         padding: 2px 8px; /* padding for each command suggestion */
         cursor: pointer;
+        &:hover {
+            background-color: var(--tn-background);
+            border-radius: 20%;
+        }
         /* Additional styles for the suggestion items */
     }
     & input#cmd {
@@ -316,8 +326,6 @@ footer {
         display: inline-block;
         position: absolute;
         background-color: var(--tn-foreground);
-        font-family: monospace;
-        font-size: 16px;
         color: var(--tn-background-storm);
         height: 100%;
         min-width: 1ch;

@@ -92,20 +92,20 @@ suggestionsDiv.addEventListener('click', function(e) {
   }
 });
 
-// Style each suggestion
-document.addEventListener('mouseover', function(e) {
-  if (e.target.classList.contains('suggestion-item')) {
-    // Highlight suggestion on hover
-    e.target.style.backgroundColor = 'gray';
-  }
-});
+// // Style each suggestion
+// document.addEventListener('mouseover', function(e) {
+//   if (e.target.classList.contains('suggestion-item')) {
+//     // Highlight suggestion on hover
+//     e.target.style.backgroundColor = 'gray';
+//   }
+// });
 
-document.addEventListener('mouseout', function(e) {
-  if (e.target.classList.contains('suggestion-item')) {
-    // Remove highlight on mouse out
-    e.target.style.backgroundColor = '';
-  }
-});
+// document.addEventListener('mouseout', function(e) {
+//   if (e.target.classList.contains('suggestion-item')) {
+//     // Remove highlight on mouse out
+//     e.target.style.backgroundColor = '';
+//   }
+// });
 
 document.addEventListener('selectionchange', function(e) {
   moveCaret(inputCmd, promptDiv);
