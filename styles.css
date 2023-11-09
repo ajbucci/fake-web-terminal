@@ -1,3 +1,19 @@
+@font-face {
+    font-family: jetbrains;
+    src: url(JetBrainsMono-VariableFont_wght.ttf);
+}
+@font-face {
+    font-family: firamono-bold;
+    src: url(FiraMono-Bold.ttf);
+}
+@font-face {
+    font-family: firamono-medium;
+    src: url(FiraMono-Medium.ttf);
+}
+@font-face {
+    font-family: firamono-regular;
+    src: url(FiraMono-Regular.ttf);
+}
 :root {
     min-height:100vh;
     --dark-mode-red: #F7768E;
@@ -136,22 +152,6 @@ html, body {
         transition: border 1s;
     }
 }
-@font-face {
-    font-family: jetbrains;
-    src: url(JetBrainsMono-VariableFont_wght.ttf);
-}
-@font-face {
-    font-family: firamono-bold;
-    src: url(FiraMono-Bold.ttf);
-}
-@font-face {
-    font-family: firamono-medium;
-    src: url(FiraMono-Medium.ttf);
-}
-@font-face {
-    font-family: firamono-regular;
-    src: url(FiraMono-Regular.ttf);
-}
 
 body {
     background: var(--site-bg);
@@ -231,12 +231,6 @@ header {
         padding: 0.5em;
         margin-left: 1em;
     }
-    & #nametag {
-        /* border: 0.1em solid var(--tn-bright-yellow);
-        border-radius: 20% 0 20% 0%; */
-        /* padding: 0.5em; */
-        /* margin-left: 1em; */
-    }
 }
 
 footer {
@@ -283,11 +277,11 @@ footer {
     & .suggestions {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px; /* space between suggestions */
-        margin-top: 5px;
+        gap: 0.6rem; /* space between suggestions */
+        margin-top: 0.2rem;
     }
     & .suggestion-item {
-        padding: 2px 8px; /* padding for each command suggestion */
+        padding: 0.2rem 0.5rem; /* padding for each command suggestion */
         cursor: pointer;
         &:hover {
             background-color: var(--tn-background);
@@ -330,13 +324,10 @@ footer {
         animation: blink 1s step-end infinite;
     }
 }
-
-
 @keyframes blink {
     0% {background-color: var(--tn-foreground);}
     50% {background-color: transparent; color: var(--tn-foreground);}
 }
-
 @media screen and (max-width: 750px) {
     .left, .right {
         width: 5%;
