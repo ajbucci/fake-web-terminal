@@ -43,13 +43,10 @@ html, body {
     font-family: jetbrains;
 }
 .main {
-    width: 80%;
     display: flex;
+    flex-grow: 1;
 }
-.left {
-    width: 10%;
-}
-.right {
+.left, .right {
     width: 10%;
 }
 .color-scheme-wrapper{
@@ -341,7 +338,10 @@ footer {
 }
 
 @media screen and (max-width: 750px) {
-
+    .left, .right {
+        width: 5%;
+        flex-shrink: 0;
+    }
     #headshot-div {
         flex-direction: column;
         margin-top: 0.5rem;
