@@ -22,14 +22,14 @@
                     </a>
                     <div id="nametag-div"><a href="/" id="nametag">AJ Bucci</a></div>
                 </div>
-                <div class="topnav">
+                <nav class="topnav">
                     <ul>
                         <li><a href="about.html">About</a></li>
                         <li><a href="projects.html">Projects</a></li>
                         <li><a href="cv.html">CV</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
-                </div>
+                </nav>
             </div>
             <div class="right"></div>
         </header>
@@ -61,5 +61,51 @@
         <footer>&copy; 2023 <a href="/contact">AJ Bucci</a>. All rights reserved.</footer>
     </div>
     <script type="module" src="js/index.js"></script>
+    <script>
+                // Function to set a cookie
+                function setCookie(name, value, days) {
+          var expires = "";
+          if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+          }
+          document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+        }
+      
+        // Function to get a cookie
+        function getCookie(name) {
+          var nameEQ = name + "=";
+          var ca = document.cookie.split(';');
+          for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') c = c.substring(1,c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+          }
+          return null;
+        }
+      
+        // Function to handle the toggle
+        function handleToggle() {
+          var checkbox = document.getElementById('toggleLights');
+          var isLightMode = getCookie('lightMode') === 'true';
+          checkbox.checked = isLightMode;
+      
+          // Update the cookie whenever the checkbox changes
+          checkbox.addEventListener('change', function() {
+            setCookie('lightMode', checkbox.checked, 7); // Expires in 7 days
+            // Trigger a custom event for CSS changes
+            document.dispatchEvent(new Event('lightModeChange'));
+          });
+      
+          // Initial setting of the cookie if it does not exist
+          if (getCookie('lightMode') === null) {
+            setCookie('lightMode', checkbox.checked, 7); // Expires in 7 days
+          }
+        }
+      
+        // Call handleToggle on page load
+        window.onload = handleToggle;
+    </script>
 </body>
 </html>
